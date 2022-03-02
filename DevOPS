@@ -21,30 +21,87 @@ Monitoring (Application Monitoring, Log monitoring)
  GIT
  -------------------------------------------------
 * What is GIT ?
+What is Git? Git is a DevOps tool used for source code management. It is a free and open-source version control system used to handle small to very large projects efficiently.
+Git is used to tracking changes in the source code, enabling multiple developers to work together on non-linear development.
 * What is difference between GIT & Github ?
-* Why we use GIT ?
-* What is SCM & VCS ?
+While Git is a tool that's used to manage multiple versions of source code edits that are then transferred to files in a Git repository, GitHub serves as a location for uploading copies of a Git repository.
+* 
+* What is SCM & VCS ? 
+is a way to manage and document changes developers make to software code.
 * What are the process of pushing the code to Github Repository ?
+Initialize the local directory as a Git repository.
+$ git init -b main
+$ git add .
+$ git commit -m "First commit"
+$ git remote add origin  <REMOTE_URL> 
+$ git push origin main
+
 * Why do we commit ?
+ git commit is used to create a snapshot of the staged changes along a timeline of a Git projects history.
+ 
 * What are the commands of GIT to push the code ?
+ git push origin master  
 * How you can merge a git repository with another ?
+   "to merge a branch to master
+--> stay in master then run 
+git merge branch1
+then the branch will get merged to master "
+
 * What is branching in git ?
+ Git branches are effectively a pointer to a snapshot of your changes
 * Different types of branching in GIT ?
-* What is merge conflict in git ?
+Master
+Maintenance
+release
+
+* What is merge conflict in git?
+an event that takes place when Git is unable to automatically resolve differences in code between two commits.
+
 * How you can resolve merge conflict if you are merging same
   project and in the same branch ? 
+
+The easiest way to resolve a conflicted file is to open it and make any necessary changes.
+After editing the file, we can use the git add a command to stage the new merged content.
+The final step is to create a new commit with the help of the git commit command.
 
 ====================================================
 Jenkins
 ====================================================
 
 * What is Jenkins ?
+  an open source automation server which enables developers around the world to reliably build, test,    and deploy their software.
 * Why we use Jenkins ?
+to build and test your software projects continuously making it easier for developers to integrate changes to the project, and making it easier for users to obtain a fresh build.
 * What are the other tools/technologies present in market other than
   Jenkins for CI/CD ?
+  CircleCI. ...
+TeamCity. ...
+Travis CI. ...
+BuildMaster. ...
+Bitrise. ...
+
 * How to move Jenkins from one server to another ? 
+Method 1 using thin backup plugin
+On Sourse Jenkins go to ThinBackup → Backup Now
+Copy backup to target
+On Target Jenkins go to ThinBackup → Restore, and then restart Jenkins service.  
+
+METHOD 2 (copying JENKINS_HOME)
+
+METHOD 3 (job imports plugin)
+install this plugin
+then this will appear in the dashboard
+on the left side , open the plugin
+add the URL to the other server and the folders (jobs) it should fetch
+the new server will fetch the specified jobs from the old server or infact all.
+
+
+
 * How to create Jenkins backup ?
+thinbackup plugin
 * What are plugins in Jenkins ?
+  The primary means of enhancing the functionality of a Jenkins environment to suit organization- or user-specific needs.
+  
 * What are the default plugins installed in Jenkins ?
 * How to schedule builds in Jenkins ?
 * Difference between Ant, Maven, Gradle ? 
@@ -53,9 +110,14 @@ Jenkins
 * What is Jenkins slaves ?
 * How to run a groovy script in Jenkins ?
 * What is Jenkins Pipeline ?
+a suite of plugins which supports implementing and integrating continuous delivery pipelines into Jenkins
 * What are different types of Jenkins Pipeline ?
+What are different types of Jenkins pipeline?
+The Jenkins pipelines are divided into two types. They are the declarative and scripted pipelines. The Declarative pipeline is a recent feature that offers richer syntactical features over Scripted Pipeline syntax
 * What is Declarative pipeline in Jenkins ?
-* Is Jenkins a CI tool or both CI/CD ?
+Declarative pipelines break down stages into individual stages that can contain multiple steps
+* Is Jenkins a CI tool or both CI/CD ? - both
+
 * How to install Jenkins with non root access in Linux ?
 * If you have 200 employees in your company, how you can assign Jenkins
   access to these employee how you can give permission in Jenkins ?
@@ -80,24 +142,67 @@ Complete the following tasks:
 Ansible
 
 * What is Ansible ?
+Ansible is an open-source automation tool, or platform, used for IT tasks such as configuration management, application deployment, intraservice orchestration, and provisioning
+
 * What is Configuration Management ?
+a systems engineering process for establishing consistency of a product's attributes throughout its life.
 * Is Ansible only a tool for Configuration Management ?
+is an open source IT Configuration Management, Deployment & Orchestration tool.
 * What are the components of Ansible ?
+Inventory
+Playbook
+Modules
+Plays
+Variables
+facts
+Configuration files - /etc/ansible/ansible.cfg
+
+
 * How Ansible works ?
+Ansible works by connecting to your nodes and pushing out small programs, called "Ansible modules" to them.
+
 * What are the other tools in market other than Ansible ?
+Puppet Enterprise.
+Chef.
+
 * How Ansible is different from Chef & Puppet ?
 * What is Inventory in Ansible ?
+The Ansible inventory file defines the hosts and groups of hosts upon which commands, modules, and tasks in a playbook operate.
+
 * What are the types of Inventories ?
+In Ansible, there are two types of inventory files: Static and Dynamic.
+In Ansible, a static inventory file is a plain text file that contains a list of managed hosts declared under a host group using either hostnames or IP addresses.
+
+
+
 * What is play & playbook ?
+A playbook is a list of plays
 * Difference between hosts & groups ?
+Group variables are a convenient way to apply variables to multiple hosts at once.
 * What is Roles ?
+Ansible roles allow you to develop reusable automation components by grouping and encapsulating related automation artifacts, like configuration files, templates, tasks, and handlers.
+
 * How to install a Role ?
 * How to install multiple roles ?
 * How to create roles ?
+  $ ansible-galaxy init role-name
+This role directory contains the following directories or folders by default.
+
+The ‘defaults’ folder – This contains the default variables that will be used by the role.
+The ‘files’ folder – Contains files that can be deployed by the role.
+The ‘handlers’ folder – Stores handlers that can be used by this role.
+he ‘meta’ folder – Contains files that establish the role dependencies.
+The ‘tasks’ folder – It contains a YAML file that spells out the tasks for the role itself. Usually, this is the main.yml file.
+The ‘templates’ folder – Contains template files that can be modified and allocated to the remote host being provisioned.
+The ‘tests’ folder – Integrates testing with Ansible playbook files.
+The ‘vars’ folder – Contains variables that are going to be used by the role. You can define them in the playbook file, but it’s recommended you define them in this directory.
+
+
+
+
 * What is Dynamic Inventory & when we use it & for what ?
 * Where is the Ansible Configuration file located ?
-* What are the different ways other than SSH by which Ansible
-  can connect to remote hosts ?
+* What are the different ways other than SSH by which Ansible can connect to remote hosts ?
 * What is variable in Ansible ?
 * What are different types of variables ?
 * How to assign variables in group vars & hosts vars ?
@@ -117,7 +222,7 @@ Ansible
 * What is Privilege Escalation in Ansible ?
 * Task to connect(SSH) Ansible to remote host using another user &
   run the playbook to the remote host using with another user ?
-* What is Ansible vault ?
+* What is Ansible vault?
 * How to decrypt a vault file ?
 * How to encrypt a string in Ansible using Ansible Vault ?
 * If a string is encrypted in a file with a password then how to pass
@@ -138,9 +243,19 @@ Ansible
 * What is block in Ansible ?
 * What are different variable scopes ?
 * How variable precedence takes place ?
+
 * Difference between include & import ?
+Include  - is a dynamic inclusion of files
+Import - is static in nature
+
 * How to include custom modules in Ansible ?
+  You can add a local module in any of below locations as Ansible automatically loads all executable files found in those directories as modules.
+~/.ansible/plugins/modules/
+/usr/share/ansible/plugins/modules/
+any directory in ANSIBLE_LIBRARY environment variable.
+
 * Describe the role directory structure ?
+A role directory structure contains directories: defaults, vars, tasks, files, templates, meta, handlers. Each directory must contain a main. yml file which contains relevant content.
 
 Ansible Task
 
