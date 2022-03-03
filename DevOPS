@@ -180,7 +180,8 @@ A playbook is a list of plays
 * Difference between hosts & groups ?
 Group variables are a convenient way to apply variables to multiple hosts at once.
 * What is Roles ?
-Ansible roles allow you to develop reusable automation components by grouping and encapsulating related automation artifacts, like configuration files, templates, tasks, and handlers.
+Ansible roles allow you to develop reusable automation components by grouping and encapsulating related automation artifacts, 
+like configuration files, templates, tasks, and handlers.
 
 * How to install a Role ?
 * How to install multiple roles ?
@@ -202,17 +203,85 @@ The ‘vars’ folder – Contains variables that are going to be used by the ro
 
 * What is Dynamic Inventory & when we use it & for what ?
 * Where is the Ansible Configuration file located ?
+/etc/ansible/ansible.cfg
 * What are the different ways other than SSH by which Ansible can connect to remote hosts ?
-* What is variable in Ansible ?
+The most commonly used are the paramiko SSH, native ssh (just called ssh), and local connection types.
+All of these can be used in playbooks and with /usr/bin/ansible to decide how you want to talk to remote machines.
+* What is variable in Ansible?
 * What are different types of variables ?
+  Ansible supports two types of inventory variables Host Variables and Group Variables.
+ Host variables are applied to specific host for which the variable is declared. 
+ On the other hand, Group Variables are applied to a group of hosts.
+
 * How to assign variables in group vars & hosts vars ?
+
+
+host variables
+
+In inventory file:
+
+[web_servers]
+webserver_1  ntp_server=uk.pool.ntp.org
+webserver_2  ntp_server=de.pool.ntp.org
+
+or 
+# vim /etc/ansible/host_vars/webserver_1
+---
+ntp_server=uk.pool.ntp.org
+
+# vim /etc/ansible/host_vars/webserver_2
+---
+ntp_server=de.pool.ntp.org
+
+-------------------------------------------
+Group variables
+
+In inventory file:
+[web_servers]
+webserver_1
+webserver_2
+[web_servers:vars]
+ansible_user=root
+ansible_port=22
+    
+       OR 
+ 
+ # vim /etc/ansible/group_vars/web_servers
+---
+ansible_user=root
+ansible_port=22
+
+
+
+
+
 * Difference between File & Template directory in Roles ?
+files: contains files which we want to be copied to the remote host.We don't need to specify a path of resources stored in this directory. 
+templates: contains file template which supports modifications from the role. We use the Jinja2 templating language for creating templates.
+
 * Difference between default & vars directory in Roles ?
+defaults mean “default variables for the roles” and vars mean “other variables for the role”.
+
 * What is Jinja 2 template ?
+Jinja2 templates are simple template files that store variables that can change from time to time. 
+When Playbooks are executed, these variables get replaced by actual values defined in Ansible Playbooks.
+This way, templating offers an efficient and flexible solution to create or alter configuration file with ease.
+
 * What is modules in Ansible ?
+Modules (also referred to as “task plugins” or “library plugins”) are discrete units of code that can be used from the command line or in a playbook task. 
+
 * Difference between COPY & FILE modules ?
+The copy module – to copy files from ansible control machine local to the remote machine, host/host group
+Ansible file module is used to deal with the files, directories, and symlinks. You can create or remove files, symlinks or directories on the remote hosts using the Ansible file module. It is also used to change the file ownership, group and permissions.
+
 * Difference between SHELL & COMMAND modules ?
+With the Command module the command will be executed without being proceeded through a shell. As a consequence some variables like $HOME are not available. And also stream operations like <, >, | and & will not work.
+The Shell module runs a command through a shell, by default /bin/sh. This can be changed with the option executable. Piping and redirection are here therefor available.
+The command module is more secure, because it will not be affected by the user’s environment.
+
 * What is Setup module ? what it does ?
+This module is automatically called by playbooks to gather useful variables about remote hosts that can be used in playbooks
+
 * What is register & debug in Ansible ?
 * What is changed_when in Ansible ?
 * Can we disable automatic facts gathering in Ansible ?
