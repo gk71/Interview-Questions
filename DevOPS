@@ -21,13 +21,16 @@ Monitoring (Application Monitoring, Log monitoring)
  GIT
  -------------------------------------------------
 * What is GIT ?
-What is Git? Git is a DevOps tool used for source code management. It is a free and open-source version control system used to handle small to very large projects efficiently.
+Git is a DevOps tool used for source code management. It is a free and open-source version control system used to handle small to very large projects efficiently.
 Git is used to tracking changes in the source code, enabling multiple developers to work together on non-linear development.
+-------------------------------------------------------------------------------
 * What is difference between GIT & Github ?
-While Git is a tool that's used to manage multiple versions of source code edits that are then transferred to files in a Git repository, GitHub serves as a location for uploading copies of a Git repository.
-* 
+While Git is a tool that's used to manage multiple versions of source code edits that are then transferred to files in a Git repository, GitHub serves as a location for 
+uploading copies of a Git repository.
+-------------------------------------------------------------
 * What is SCM & VCS ? 
-is a way to manage and document changes developers make to software code.
+is a way to manage any document changes developers make to software code.
+-------------------------------------------------------------
 * What are the process of pushing the code to Github Repository ?
 Initialize the local directory as a Git repository.
 $ git init -b main
@@ -35,28 +38,33 @@ $ git add .
 $ git commit -m "First commit"
 $ git remote add origin  <REMOTE_URL> 
 $ git push origin main
-
+-------------------------------------------------------------
 * Why do we commit ?
  git commit is used to create a snapshot of the staged changes along a timeline of a Git projects history.
- 
+ --------------------------------------------------------------
 * What are the commands of GIT to push the code ?
  git push origin master  
+ ---------------------------------------------------------------
 * How you can merge a git repository with another ?
    "to merge a branch to master
 --> stay in master then run 
 git merge branch1
 then the branch will get merged to master "
+---------------------------------------------------------------
 
 * What is branching in git ?
  Git branches are effectively a pointer to a snapshot of your changes
+ --------------------------------------------------------------
 * Different types of branching in GIT ?
 Master
 Maintenance
 release
-
+hotfix
+feature
+-----------------------------------------------------------------
 * What is merge conflict in git?
 an event that takes place when Git is unable to automatically resolve differences in code between two commits.
-
+----------------------------------------------------------------
 * How you can resolve merge conflict if you are merging same
   project and in the same branch ? 
 
